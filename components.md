@@ -16,7 +16,7 @@ Person(user, "Пользователь")
 
 System_Ext(web_site, "Клиентский веб-сайт", "HTML, CSS, JavaScript, React", "Веб-интерфейс")
 
-System_Boundary(conference_site, "Сайт сервиса доставки") {
+System_Boundary(delivery_site, "Сайт сервиса доставки") {
    'Container(web_site, "Клиентский веб-сайт", ")
    Container(client_service, "Сервис авторизации", "Python", "Сервис управления пользователями", $tags = "microService")    
    Container(package_service, "Сервис посылок", "Python", "Сервис управления посылками", $tags = "microService") 
