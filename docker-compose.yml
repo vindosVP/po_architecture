@@ -1,11 +1,11 @@
 version: '2.1'
 
 services:
-  mai-db-1:
+  mai-db-node-ex01:
     build:
       context: mariadb
       dockerfile: Dockerfile
-    container_name: mai-db-1
+    container_name: mai-db-node-ex01
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: archdb
@@ -25,13 +25,13 @@ services:
       timeout: 20s
       retries: 5
     volumes:
-      - mai-db-1-data:/var/lib/mysql
+      - mai-db-node-ex01-data:/var/lib/mysql
 
-  mai-db-2:
+  mai-db-node-ex02:
     build:
       context: mariadb
       dockerfile: Dockerfile
-    container_name: mai-db-2
+    container_name: mai-db-node-ex02
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: archdb
@@ -51,13 +51,13 @@ services:
       timeout: 20s
       retries: 5
     volumes:
-      - mai-db-2-data:/var/lib/mysql
+      - mai-db-node-ex02-data:/var/lib/mysql
 
-  mai-db-3:
+  mai-db-node-ex03:
     build:
       context: mariadb
       dockerfile: Dockerfile
-    container_name: mai-db-3
+    container_name: mai-db-node-ex03
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: archdb
@@ -77,7 +77,7 @@ services:
       timeout: 20s
       retries: 5
     volumes:
-      - mai-db-3-data:/var/lib/mysql
+      - mai-db-node-ex03-data:/var/lib/mysql
 
   sharded-db:
     build:
@@ -94,9 +94,9 @@ services:
       # Mysql Admin Port
       - 6032:6032
     depends_on:
-      - mai-db-1
-      - mai-db-2
-      - mai-db-3
+      - mai-db-node-ex01
+      - mai-db-node-ex02
+      - mai-db-node-ex03
     volumes:
       - proxysql-data:/var/lib/proxysql
 
@@ -215,9 +215,9 @@ services:
         condition: service_healthy
 
 volumes:
-  mai-db-1-data:
-  mai-db-2-data:
-  mai-db-3-data:
+  mai-db-node-ex01-data:
+  mai-db-node-ex02-data:
+  mai-db-node-ex03-data:
   proxysql-data:
   cache:
 

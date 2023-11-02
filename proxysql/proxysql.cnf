@@ -45,6 +45,12 @@ mysql_servers =
         hostgroup=1
         max_connections=200
     },
+    {
+        address="mai-db-node-ex03"
+        port=3306
+        hostgroup=2
+        max_connections=200
+    },
 )
 
 # Contains rows for the mysql_users table from the admin interface.
@@ -80,6 +86,13 @@ mysql_query_rules:
         rule_id=2
         active=1
         match_pattern="-- sharding:1"
+        destination_hostgroup=1
+        apply=1
+    },
+    {
+        rule_id=3
+        active=1
+        match_pattern="-- sharding:2"
         destination_hostgroup=1
         apply=1
     },
