@@ -155,7 +155,7 @@ services:
       - QUEUE_HOST=kafka-node-1:9092
       - QUEUE_TOPIC=event_server
       - QUEUE_GROUP_ID=0
-    entrypoint: /mai_architecture/build/user_writer_service
+    entrypoint: /po_architecture/build/user_writer_service
     networks:
       - arch-network
     depends_on:
@@ -180,7 +180,7 @@ services:
       - QUEUE_GROUP_ID=0
     ports:
       - 8080:8080
-    entrypoint: /mai_architecture/build/app
+    entrypoint: /po_architecture/build/app
     networks:
       - arch-network
     depends_on:
@@ -207,7 +207,7 @@ services:
       - QUEUE_GROUP_ID=0
     ports:
       - 8081:8081
-    entrypoint: /mai_architecture/build/other_service
+    entrypoint: /po_architecture/build/other_service
     networks:
       - arch-network
     depends_on:
