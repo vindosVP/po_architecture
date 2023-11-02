@@ -9,5 +9,5 @@ RUN git clone https://github.com/mfontanini/cppkafka && cd cppkafka && mkdir bui
 ADD http://date.jsontest.com /etc/builddate
 RUN git clone https://github.com/vindosVP/po_architecture.git
 RUN sudo ldconfig
-RUN cd mai_architecture && mkdir build && cd build && cmake .. && make
+RUN cd po_architecture && mkdir build && cd build && cmake .. && make
 ENTRYPOINT [ "mai_architecture/build/app" ]

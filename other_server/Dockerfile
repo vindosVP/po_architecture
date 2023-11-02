@@ -6,5 +6,5 @@ RUN git clone --depth 1 --branch poco-1.12.4-release https://github.com/pocoproj
 ADD http://date.jsontest.com /etc/builddate
 RUN git clone https://github.com/vindosVP/po_architecture.git
 RUN sudo ldconfig
-RUN cd mai_architecture && mkdir build && cd build && cmake .. && make
+RUN cd po_architecture && mkdir build && cd build && cmake .. && make
 ENTRYPOINT [ "mai_architecture/build/other_service" ]
