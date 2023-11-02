@@ -7,4 +7,4 @@ ADD http://date.jsontest.com /etc/builddate
 RUN git clone https://github.com/vindosVP/po_architecture.git
 RUN sudo ldconfig
 RUN cd po_architecture && mkdir build && cd build && cmake .. && make
-ENTRYPOINT [ "mai_architecture/build/app" ]
+ENTRYPOINT [ "po_architecture/build/app" ]
