@@ -1,0 +1,381 @@
+{
+	"info": {
+		"_postman_id": "ebe925e6-1ed1-44e0-823e-f741ea05d497",
+		"name": "PO_ARCITECTURE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20758355"
+	},
+	"item": [
+		{
+			"name": "auth_service",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user?first_name=vadim&last_name=valov&email=vadiminmail@gmail&gender=male&login=vindos&password=pwd",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "vadim"
+								},
+								{
+									"key": "last_name",
+									"value": "valov"
+								},
+								{
+									"key": "email",
+									"value": "vadiminmail@gmail"
+								},
+								{
+									"key": "gender",
+									"value": "male"
+								},
+								{
+									"key": "login",
+									"value": "vindos"
+								},
+								{
+									"key": "password",
+									"value": "pwd"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user?id=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "auth",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/auth",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/search?first_name=Vadim&last_name=Valov",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "first_name",
+									"value": "Vadim"
+								},
+								{
+									"key": "last_name",
+									"value": "Valov"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat_service",
+			"item": [
+				{
+					"name": "send_message",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{chat_host}}/send?text=MessageToMoxem&to=2",
+							"host": [
+								"{{chat_host}}"
+							],
+							"path": [
+								"send"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "MessageToMoxem"
+								},
+								{
+									"key": "to",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_messages",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/user?id=1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_grop_chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{chat_host}}/groups?title=baget",
+							"host": [
+								"{{chat_host}}"
+							],
+							"path": [
+								"groups"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "baget"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_user_to_group_chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{chat_host}}/groups/add_user?group_id=1&to=2",
+							"host": [
+								"{{chat_host}}"
+							],
+							"path": [
+								"groups",
+								"add_user"
+							],
+							"query": [
+								{
+									"key": "group_id",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_group_chat_messages",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{chat_host}}/groups?group_id=1",
+							"host": [
+								"{{chat_host}}"
+							],
+							"path": [
+								"groups"
+							],
+							"query": [
+								{
+									"key": "group_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "send_message_to_group_chat",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "vindos",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "pwd",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{chat_host}}/groups/send?group_id=1&text=Message to baget",
+							"host": [
+								"{{chat_host}}"
+							],
+							"path": [
+								"groups",
+								"send"
+							],
+							"query": [
+								{
+									"key": "group_id",
+									"value": "1"
+								},
+								{
+									"key": "text",
+									"value": "Message to baget"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

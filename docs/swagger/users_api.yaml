@@ -1,0 +1,154 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: 'User service API'
+servers:
+  - url: http://localhost:8080
+tags:
+  - name: users
+  - name: auth
+paths:
+  /user:
+    post:
+      tags:
+        - users
+      summary: Create user
+      parameters:
+      - name: first_name
+        description: first name
+        example: vadim
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: last_name
+        description: last name
+        example: valov
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: email
+        description: email
+        example: vadiminmail@gmail.com
+        in: query
+        required: true
+        schema:
+          type: string
+          format: email
+      - name: title
+        description: title
+        example: title
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: login
+        description: login
+        example: vindos
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: password
+        description: password
+        example: pwd
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Ok
+    get:
+      tags:
+        - users
+      summary: Get user by id
+      parameters:
+        - name: id
+          description: user id
+          in: query
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Ok
+          content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/user_response'
+  /auth:
+    get:
+      tags:
+        - auth
+      summary: Auth
+      responses:
+        '200':
+          description: Ok
+  /user/search:
+    post:
+      tags:
+        - users
+      summary: Search for user
+      parameters:
+        - name: first_name
+          description: first name
+          example: vadim
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: last_name
+          description: last name
+          example: valov
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Ok
+          content:
+              application/json:
+                schema:
+                    $ref: '#/components/schemas/users_response'
+components:
+  schemas:
+    users_response:
+      type: array
+      items: 
+        $ref: '#/components/schemas/user_response'
+    user_response:
+      type: object
+      properties:
+        email:``
+          type: string
+          format: email
+          example: vadiminmail@gmail.com
+        first_name:
+          type: string
+          example: vadim
+        id:
+          type: integer
+          format: int64
+          example: 1
+        last_name:
+          type: string
+          example: valov
+        login:
+          type: string
+          example: vindos
+        password:
+          type: string
+          example: "******"
+        title:
+          type: string
+          example: title
+  securitySchemes:
+      basicAuth:     
+        type: http
+        scheme: basic
+security:
+  - basicAuth: []
